@@ -1,28 +1,32 @@
-from flask import Flask, request, jsonify
+from flask import Flask, jsonify, render_template
 import time
 
 app = Flask(__name__)
 
-cart_count = 0
+cart = 0
 
-@app.route('/add', methods=['POST'])
-def add_product():
-    global cart_count
+@app.route("/")
+def home():
+    return render_template("index.html")
 
-    cart_count += 1
 
-    # simulate heavy processing
+@app.route("/add", methods=["POST"])
+def add():
+    global cart
+    cart += 1
+
     time.sleep(0.2)
 
     return jsonify({
         "message": "Product added",
-        "cart_items": cart_count
+        "cart_count": cart
     })
 
 
-@app.route('/health')
+@app.route("/health")
 def health():
     return "OK"
 
+
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host="0.0.0.0", port=5000)

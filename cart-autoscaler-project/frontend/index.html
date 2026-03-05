@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Ecommerce Cart</title>
+<title>Cart App</title>
 </head>
 
 <body>
 
-<h1>Cart System</h1>
+<h2>Auto Scaling Cart App</h2>
 
 <button onclick="addProduct()">Add Product</button>
-
 <button onclick="stressTest()">Click 10 Times</button>
 
 <p id="result"></p>
@@ -17,14 +16,18 @@
 <script>
 
 function addProduct(){
+
 fetch("/add", {
-method:"POST"
+method: "POST"
 })
-.then(res=>res.json())
-.then(data=>{
+.then(res => res.json())
+.then(data => {
+
 document.getElementById("result").innerText =
-"Cart Items: " + data.cart_items
+"Cart Items: " + data.cart_count
+
 })
+
 }
 
 function stressTest(){
