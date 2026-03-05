@@ -14,7 +14,7 @@ spec:
   spec:
     containers:
       - name: cart-image
-        image: cart-app:latest
+        image: vinod5982/cart-app:v1
         ports:
           - containerPort: 5000
         resources:
