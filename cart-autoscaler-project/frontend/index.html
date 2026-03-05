@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ecommerce Cart</title>
+</head>
+
+<body>
+
+<h1>Cart System</h1>
+
+<button onclick="addProduct()">Add Product</button>
+
+<button onclick="stressTest()">Click 10 Times</button>
+
+<p id="result"></p>
+
+<script>
+
+function addProduct(){
+fetch("/add", {
+method:"POST"
+})
+.then(res=>res.json())
+.then(data=>{
+document.getElementById("result").innerText =
+"Cart Items: " + data.cart_items
+})
+}
+
+function stressTest(){
+
+for(let i=0;i<10;i++){
+addProduct()
+}
+
+}
+
+</script>
+
+</body>
+</html>
