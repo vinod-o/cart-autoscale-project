@@ -11,14 +11,14 @@ spec:
     metadata:
       labels:
         app: cart-app
-  spec:
-    containers:
-      - name: cart-image
-        image: vinod5982/cart-app:v1
-        ports:
-          - containerPort: 5000
-        resources:
-          requests:
-            cpu: "100m"
-          limits:
-            cpu: "200m"
+    spec:
+      containers:
+        - name: cart-image
+          image: vinod5982/cart-app:v1
+          ports:
+            - containerPort: 5000
+          resources:
+            requests:
+              cpu: "100m"
+            limits:
+              cpu: "200m"
