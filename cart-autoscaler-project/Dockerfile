@@ -2,9 +2,11 @@ FROM python:3.10-slim
 
 WORKDIR /app 
 
-COPY . .
+COPY /app .
 
 RUN pip install -r requirments.txt  
+
+COPY . . 
 
 EXPOSE 5000 
 
