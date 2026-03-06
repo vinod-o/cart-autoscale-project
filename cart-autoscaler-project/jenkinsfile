@@ -1,0 +1,30 @@
+pipline{
+    agent any 
+    stages{
+        stage('checkout code'){
+            steps{
+                echo 'clone code from github'
+                git branch: 'main', url: 'https://github.com/vinod-o/cart-autoscale-project.git'
+            }
+        }
+        stage('image build'){
+            steps{
+                echo 'Build the image'
+                sh 'docker build -t cart-app:${BUILD_NUMBER} . '
+            }
+        }
+        stage('push image '){
+            steps{
+                echo 'push image to container'
+                withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]){
+                    sh 'docker login -u vinod5982 -p ${dockerhub}'
+                    sh 'docker tag cart-app:${BUILD_NUMBER} vinod5982/cart-app:${BUILD_NUMBER}'
+                    sh 'docker push vinod5982/cart-app:${BUILD_NUMBER}'
+                    echo 'pushed sucessfully'
+
+                }
+            }
+        }
+
+    }
+}
