@@ -20,7 +20,7 @@ pipline{
                     sh 'docker login -u vinod5982 -p ${dockerhub}'
                     sh 'docker tag cart-app:${BUILD_NUMBER} vinod5982/cart-app:${BUILD_NUMBER}'
                     sh 'docker push vinod5982/cart-app:${BUILD_NUMBER}'
-                    echo 'pushed sucessfully'
+                    echo 'pushed sucessfullly'
 
                 }
             }
